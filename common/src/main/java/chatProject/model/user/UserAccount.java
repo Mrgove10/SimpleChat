@@ -44,12 +44,12 @@ public class UserAccount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserAccount that = (UserAccount) o;
-        return id == that.id;
+        return username == that.username;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(username);
     }
 
     @Override
