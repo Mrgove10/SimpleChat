@@ -27,12 +27,7 @@ public class ChatInstance<T> {
     private final Map<UserInfo, LocalTime> users;
 
     public ChatInstance(List<Chatroom<T>> chatrooms, Map<UserInfo, LocalTime> users) {
-        if(chatrooms == null){
-            this.chatrooms = new ArrayList<>();
-        }
-        else{
-            this.chatrooms = chatrooms;
-        }
+        this.chatrooms = chatrooms;
         this.users = users;
     }
 
@@ -97,7 +92,7 @@ public class ChatInstance<T> {
      * @return the new chat instance
      */
     public static <T> ChatInstance<T> initEmptyChat() {
-        return new ChatInstance<T>(null, null);
+        return new ChatInstance<T>(new ArrayList<>(), null);
     }
 
 }
