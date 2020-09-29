@@ -57,7 +57,14 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                       Collection<ClientNotifierInterface<T>> clientNotifiers,
                       Gson json) {
         this.chatInstance = chatInstance;
-        this.clientNotifiers = clientNotifiers;
+
+        if(clientNotifiers == null){
+            this.clientNotifiers = new ArrayList<>();
+        }
+        else{
+            this.clientNotifiers = clientNotifiers;
+        }
+
         this.json = json;
     }
 
@@ -91,6 +98,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         server.socketThread = socketThread;
 
         //TODO: I should start the socket thread here
+        server.socketThread.start();
 
         server.checkIdleClients();
 
@@ -280,8 +288,9 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         // add it in the model
         final int newChatroomId = chatInstance.addChatroom(newChatroom);
 
-        /* maybe I should notify clients about the new chatroom ?? */
+        this.notifyNewChatroom(newChatroom);
 
+        /* maybe I should notify clients about the new chatroom ?? */
         return newChatroomId;
     }
 
@@ -316,8 +325,9 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public Message<T> addMessage(int chatroomId, UserInfo user, T content) {
         Message<T> newMessage = getChatroom(chatroomId).addMessage(user, content);
+        this.notifyNewMessage(chatroomId,newMessage);
 
-       return newMessage;
+        return newMessage;
     }
 
     /**
