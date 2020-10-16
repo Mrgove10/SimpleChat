@@ -1,6 +1,10 @@
 plugins {
     // central reports in ./build/buildDashboard
     id 'build-dashboard'
+    id 'pmd'
+  //  id 'findbugs'
+    id 'checkstyle'
+    id 'jacoco'
 }
 
 subprojects {
