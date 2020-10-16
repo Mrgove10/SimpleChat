@@ -7,6 +7,7 @@ import com.googlecode.lanterna.gui2.*;
 
 /**
  * The window to create a new {@link chatProject.model.messages.Chatroom}
+ *
  * @param <T> the type of messages to use
  */
 public class NewChatroomGUI<T> {
@@ -31,7 +32,7 @@ public class NewChatroomGUI<T> {
         gridLayout.setHorizontalSpacing(2);
 
         // init instance
-        final NewChatroomGUI<T> instance = new NewChatroomGUI<>( chat, window, contentPanel);
+        final NewChatroomGUI<T> instance = new NewChatroomGUI<>(chat, window, contentPanel);
         instance.createWindow();
 
         // render the window

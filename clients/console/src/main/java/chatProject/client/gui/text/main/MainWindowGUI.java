@@ -11,6 +11,7 @@ import com.googlecode.lanterna.gui2.*;
 
 /**
  * The main window, after a login.
+ *
  * @param <T> the type of messages to use
  */
 public class MainWindowGUI<T> implements ChatroomsListener<T> {
@@ -44,7 +45,7 @@ public class MainWindowGUI<T> implements ChatroomsListener<T> {
                 window,
                 contentPanel,
                 new ComboBox<>(chat.getCurrentChatroomNames())
-                );
+        );
         instance.createWindow();
 
         chat.addChatroomListener(instance);
@@ -67,7 +68,7 @@ public class MainWindowGUI<T> implements ChatroomsListener<T> {
 
     private void addNewChatroomWindow() {
         contentPanel.addComponent(
-            new Button("New Chatroom", () -> NewChatroomGUI.init(chat, window.getTextGUI()))
+                new Button("New Chatroom", () -> NewChatroomGUI.init(chat, window.getTextGUI()))
         );
     }
 
@@ -75,7 +76,7 @@ public class MainWindowGUI<T> implements ChatroomsListener<T> {
         final UserAccount currentUser = chat.getCurrentUser().getAccount();
         final String username = (currentUser == null) ? "?" : currentUser.getUsername();
         contentPanel.addComponent(
-        new Label("Current user : " + username)
+                new Label("Current user : " + username)
         );
         GUIHelpers.addHorizontalSeparator(contentPanel);
     }

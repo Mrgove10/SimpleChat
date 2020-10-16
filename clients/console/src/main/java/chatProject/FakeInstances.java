@@ -1,10 +1,10 @@
 package chatProject;
 
-import chatProject.model.user.Status;
-import chatProject.model.user.UserAccount;
 import chatProject.model.messages.ChatInstance;
 import chatProject.model.messages.Chatroom;
 import chatProject.model.messages.Message;
+import chatProject.model.user.Status;
+import chatProject.model.user.UserAccount;
 import chatProject.model.user.UserInfo;
 
 import java.time.LocalTime;
@@ -29,6 +29,7 @@ public class FakeInstances {
     public static final UserInfo DUMMY_LOGOUT_USER = new UserInfo(DUMMY_ACCOUNT_2, Status.INACTIVE);
 
     public static final Map<UserInfo, LocalTime> DUMMY_USERS_MAP = new HashMap<>();
+
     static {
         DUMMY_USERS_MAP.put(DUMMY_ACTIVE_USER, LocalTime.now());
         DUMMY_USERS_MAP.put(DUMMY_LOGOUT_USER, LocalTime.now());
@@ -56,6 +57,6 @@ public class FakeInstances {
             new ChatInstance<>(
                     new ArrayList<>(asList(DUMMY_CHATROOM_1, DUMMY_CHATROOM_2)),
                     DUMMY_USERS_MAP
-                    );
+            );
 
 }

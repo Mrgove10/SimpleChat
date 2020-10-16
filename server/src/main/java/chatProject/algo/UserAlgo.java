@@ -12,6 +12,7 @@ public interface UserAlgo extends UserListener {
 
     /**
      * Logs in the given user.
+     *
      * @param userName the username to login
      * @return the logged in user, if any
      */
@@ -19,6 +20,7 @@ public interface UserAlgo extends UserListener {
 
     /**
      * Gets all users registered in the chat.
+     *
      * @return the users stored in the chat.
      */
     Collection<UserInfo> getUsers();

@@ -23,6 +23,7 @@ public class UserInfo {
 
     /**
      * Gets the account holding information about the user.
+     *
      * @return the user account
      */
     public UserAccount getAccount() {
@@ -31,6 +32,7 @@ public class UserInfo {
 
     /**
      * Gets the current status of the user.
+     *
      * @return the status of the user
      */
     public Status getCurrentStatus() {
@@ -39,6 +41,7 @@ public class UserInfo {
 
     /**
      * Sets the current satus of the user.
+     *
      * @param currentStatus the status of the user
      */
     public void setCurrentStatus(Status currentStatus) {

@@ -3,14 +3,15 @@ package chatProject.client.gui.text.user;
 import chatProject.FakeInstances;
 import chatProject.client.chat.algo.ChatClient;
 import chatProject.client.gui.text.helpers.GUIHelpers;
-import chatProject.model.user.UserInfo;
 import chatProject.client.gui.text.main.MainWindowGUI;
+import chatProject.model.user.UserInfo;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.*;
 
 /**
  * The window for login a user.
+ *
  * @param <T> the type of messages to use
  */
 public class LoginGUI<T> {
@@ -35,7 +36,7 @@ public class LoginGUI<T> {
         gridLayout.setHorizontalSpacing(2);
 
         // init instance
-        final LoginGUI<T> instance = new LoginGUI<>( chat, window, contentPanel);
+        final LoginGUI<T> instance = new LoginGUI<>(chat, window, contentPanel);
         instance.createWindow();
 
         // render the window

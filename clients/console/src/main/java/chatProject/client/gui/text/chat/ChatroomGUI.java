@@ -5,13 +5,14 @@ import chatProject.client.gui.text.helpers.GUIHelpers;
 import chatProject.model.listener.MessageListener;
 import chatProject.model.listener.UserListener;
 import chatProject.model.messages.Message;
-import chatProject.model.user.UserInfo;
 import chatProject.model.user.Status;
+import chatProject.model.user.UserInfo;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 
 /**
  * The window of a {@link chatProject.model.messages.Chatroom}
+ *
  * @param <T> the type of messages to use
  */
 public class ChatroomGUI<T> implements MessageListener<T>, UserListener {
@@ -88,7 +89,7 @@ public class ChatroomGUI<T> implements MessageListener<T>, UserListener {
 
     private void addCloseButton() {
 
-        final Runnable action =  () -> {
+        final Runnable action = () -> {
             window.close();
             msgUpdateThread.interrupt();
         };
@@ -153,8 +154,8 @@ public class ChatroomGUI<T> implements MessageListener<T>, UserListener {
                 // Force user status refresh from the user model if the user is not in the model anymore
                 chat.getUsers().stream().filter(userInfo -> sender.getAccount().equals(userInfo.getAccount()))
                         .findAny().orElseGet(() -> {
-                        sender.setCurrentStatus(Status.INACTIVE);
-                        return sender;
+                    sender.setCurrentStatus(Status.INACTIVE);
+                    return sender;
                 })
         ) + "> " + msg.getMessage().toString();
     }

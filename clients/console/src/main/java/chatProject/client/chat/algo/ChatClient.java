@@ -68,7 +68,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 serverUrl
         );
 
-        client.socketListener = new SocketReader<> (
+        client.socketListener = new SocketReader<>(
                 hostname,
                 socketPort,
                 client,
@@ -77,7 +77,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         client.socketListener.start();
 
         client.pingThread = new Thread(() -> {
-            while(true) {
+            while (true) {
                 try {
                     Thread.sleep(1000); // ping every 1s
                     if (client.currentUser != null
@@ -109,6 +109,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Gets the current user of the client.
+     *
      * @return the current user in the class
      */
     public UserInfo getCurrentUser() {
@@ -151,7 +152,8 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
             // we need a Type token to deserialize a list with a parametrized type
             // avoids cast issues from Tree to concrete class
-            Type listOfUsers = new TypeToken<Collection<UserInfo>>() {}.getType();
+            Type listOfUsers = new TypeToken<Collection<UserInfo>>() {
+            }.getType();
             return json.fromJson(response, listOfUsers);
         } catch (IOException e) {
             throw new RuntimeException("Cannot get users", e);
@@ -173,6 +175,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Adds a new listener on user changes.
+     *
      * @param listener the listener to add
      */
     public void addUserListener(UserListener listener) {
@@ -187,7 +190,8 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public List<String> getCurrentChatroomNames() {
         try {
-            Type listOfString = new TypeToken<List<String>>() {}.getType();
+            Type listOfString = new TypeToken<List<String>>() {
+            }.getType();
             return json.fromJson(
                     Request.Get(serverUrl + "/chatrooms")
                             .execute().returnContent().asString(),
@@ -203,7 +207,8 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public Chatroom<T> getChatroom(int chatroomId) {
         try {
-            Type chatroomT = new TypeToken<Chatroom<T>>() {}.getType();
+            Type chatroomT = new TypeToken<Chatroom<T>>() {
+            }.getType();
             return json.fromJson(
                     Request.Get(serverUrl + "/chatroom/" + chatroomId)
                             .execute().returnContent().asString(),
@@ -215,6 +220,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Gets the name of a chatroom given its ID.
+     *
      * @param chatroomId the chatroom ID
      * @return the chatroom name
      */
@@ -241,6 +247,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Creates a new chatroom using the current user of the client as the owner.
+     *
      * @param chatroomName the name of the chatroom to create
      */
     public void createChatroomFromCurrentUser(String chatroomName) {
@@ -260,6 +267,7 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Adds a new listener on chatroom changes.
+     *
      * @param listener the listener to add
      */
     public void addChatroomListener(ChatroomsListener<T> listener) {
@@ -270,8 +278,9 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Sends a new message in a chatroom using the current user of the client.
+     *
      * @param chatroomId the ID of the chatroom where the message is sent
-     * @param message the content of the message to send
+     * @param message    the content of the message to send
      */
     public void sendMessageForCurrentUser(int chatroomId, T message) {
         addMessage(chatroomId, currentUser, message);
@@ -290,7 +299,8 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                             json.toJson(new AddMessageForm<>(chatroomId, currentUser, content.toString())),
                             ContentType.APPLICATION_JSON
                     ).execute().returnContent().asString();
-            Type messageT = new TypeToken<Message<T>>() {}.getType();
+            Type messageT = new TypeToken<Message<T>>() {
+            }.getType();
             return json.fromJson(response, messageT);
         } catch (IOException e) {
             throw new RuntimeException(
@@ -314,7 +324,8 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
             // we need a Type token to deserialize a list with a parametrized type
             // avoids cast issues from Tree to concrete class
-            Type listOfMessages = new TypeToken<List<Message<T>>>() {}.getType();
+            Type listOfMessages = new TypeToken<List<Message<T>>>() {
+            }.getType();
             return json.fromJson(response, listOfMessages);
         } catch (IOException e) {
             throw new RuntimeException("Cannot get chatroom messages for " + chatroomId, e);
@@ -337,8 +348,9 @@ public class ChatClient<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Adds a new listener on message changes in a chatroom.
+     *
      * @param chatroomId the chatroom to listen to
-     * @param listener the listener to add
+     * @param listener   the listener to add
      */
     public void addMessageListener(int chatroomId, MessageListener<T> listener) {
         final Collection<MessageListener<T>> currentListeners =

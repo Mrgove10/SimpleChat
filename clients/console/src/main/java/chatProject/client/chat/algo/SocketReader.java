@@ -14,6 +14,7 @@ import java.net.Socket;
 
 /**
  * A dedicated class to manage the socket that sends and receives notifications from and to the server.
+ *
  * @param <T> the type of messages to use (probably String)
  */
 public class SocketReader<T> extends Thread {
@@ -49,7 +50,8 @@ public class SocketReader<T> extends Thread {
                         switch (code) {
                             case 0:
                                 // ADD CHATROOM
-                                Type chatroomT = new TypeToken<Chatroom<T>>() {}.getType();
+                                Type chatroomT = new TypeToken<Chatroom<T>>() {
+                                }.getType();
                                 final Chatroom<T> chatroom = json.fromJson(
                                         response.substring(1),
                                         chatroomT);
@@ -58,7 +60,8 @@ public class SocketReader<T> extends Thread {
                             case 1:
                                 // NEW MESSAGE
                                 final int chatroomId = Character.getNumericValue(response.charAt(1));
-                                Type messageT = new TypeToken<Message<T>>() {}.getType();
+                                Type messageT = new TypeToken<Message<T>>() {
+                                }.getType();
                                 final Message<T> msg = json.fromJson(
                                         response.substring(2),
                                         messageT
@@ -90,6 +93,7 @@ public class SocketReader<T> extends Thread {
     /**
      * Closes the socket.
      * Must be called on exit
+     *
      * @throws IOException if the socket cannot be closed
      */
     public void closeSocket() throws IOException {

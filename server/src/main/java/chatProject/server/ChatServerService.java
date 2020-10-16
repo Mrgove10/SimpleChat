@@ -9,6 +9,7 @@ import static spark.Spark.*;
 /**
  * A class that exposes the Web services of the server.
  * Based on the Spark Java library.
+ *
  * @param <T> the type of messages to use (probably String)
  */
 public class ChatServerService<T> {
@@ -46,12 +47,12 @@ public class ChatServerService<T> {
         );
 
         put("/chatroom/:chatroomName", (request, response) ->
-            json.toJson(
-                    server.addChatroom(
-                            request.params("chatroomName"),
-                            json.fromJson(request.body(), UserInfo.class)
-                    )
-            )
+                json.toJson(
+                        server.addChatroom(
+                                request.params("chatroomName"),
+                                json.fromJson(request.body(), UserInfo.class)
+                        )
+                )
         );
 
         get("/messages/:chatroomId", (request, response) -> {

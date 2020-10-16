@@ -25,6 +25,7 @@ public class UserAccount {
 
     /**
      * Gets the ID of a user (not needed).
+     *
      * @return the user unique ID
      */
     public int getId() {
@@ -33,6 +34,7 @@ public class UserAccount {
 
     /**
      * Gets the username of a user.
+     *
      * @return the username
      */
     public String getUsername() {

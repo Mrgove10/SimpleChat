@@ -11,7 +11,8 @@ public class GUIHelpers {
 
     /**
      * Adds a {@link Label} element with the given title to the given {@link Panel}.
-     * @param title the title to add
+     *
+     * @param title        the title to add
      * @param contentPanel the panel that will hold the title
      */
     public static void addTitle(String title, Panel contentPanel) {
@@ -22,8 +23,9 @@ public class GUIHelpers {
 
     /**
      * Adds a close {@link Button} to the given {@link Panel} with a dedicated action.
+     *
      * @param contentPanel the panel that will hold the button
-     * @param action the action to execute on click
+     * @param action       the action to execute on click
      */
     public static void addCloseButton(Panel contentPanel, Runnable action) {
 
@@ -54,8 +56,9 @@ public class GUIHelpers {
 
     /**
      * Adds a close {@link Button} to the given {@link Panel} that closes the given window.
+     *
      * @param contentPanel the panel that will hold the button
-     * @param window the current window
+     * @param window       the current window
      */
     public static void addCloseButton(Panel contentPanel, Window window) {
         final Runnable action = window::close;
@@ -86,6 +89,7 @@ public class GUIHelpers {
 
     /**
      * Adds an horizontal separator in the given {@link Panel}.
+     *
      * @param contentPanel the panel that will hold the new separator
      */
     public static void addHorizontalSeparator(Panel contentPanel) {
@@ -97,6 +101,7 @@ public class GUIHelpers {
 
     /**
      * Gets a consistent representation for a {@link UserInfo}.
+     *
      * @param user the user model
      * @return the matching representation
      */

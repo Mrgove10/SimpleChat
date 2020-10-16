@@ -4,6 +4,7 @@ import chatProject.model.user.UserInfo;
 
 /**
  * The content of the form to add a new message.
+ *
  * @param <T> the type of messages to use (probably String)
  */
 public class AddMessageForm<T> {
@@ -20,6 +21,7 @@ public class AddMessageForm<T> {
 
     /**
      * Gets the ID of the chatroom where the message was sent
+     *
      * @return the chatroom ID
      */
     public int getChatroomId() {
@@ -28,6 +30,7 @@ public class AddMessageForm<T> {
 
     /**
      * Gets the sender of the message.
+     *
      * @return the user who sent the message
      */
     public UserInfo getUser() {
@@ -36,6 +39,7 @@ public class AddMessageForm<T> {
 
     /**
      * Gets the content of the message.
+     *
      * @return the message content
      */
     public T getContent() {

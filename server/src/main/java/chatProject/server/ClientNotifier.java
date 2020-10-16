@@ -14,6 +14,7 @@ import java.net.Socket;
 /**
  * A class to ease sending notifications to connected clients of this server.
  * Have a look to the {@code SocketReader} class in the {@code ChatClient} class for the socket readers.
+ *
  * @param <T> the type of messages to use
  */
 public class ClientNotifier<T> implements ClientNotifierInterface<T> {
@@ -30,9 +31,10 @@ public class ClientNotifier<T> implements ClientNotifierInterface<T> {
 
     /**
      * The entry point to instantiate a new instance of this class to send notifs on the given socket.
+     *
      * @param socket the socket to use between this server and the connected client.
-     * @param json the Json (de)serializer to use
-     * @param <T> the type of messages to use
+     * @param json   the Json (de)serializer to use
+     * @param <T>    the type of messages to use
      * @return a new instance of this class
      * @throws IOException if the socket is closed
      */
@@ -83,6 +85,7 @@ public class ClientNotifier<T> implements ClientNotifierInterface<T> {
 
     /**
      * Checks if the client is still connected
+     *
      * @return false if the socket is not reachable
      */
     public boolean stillConnected() {

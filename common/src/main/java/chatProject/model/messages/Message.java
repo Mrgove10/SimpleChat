@@ -6,6 +6,7 @@ import chatProject.model.user.UserInfo;
 /**
  * A model for a message sent in the chat.
  * A message has a content (of a generic type T), a unique ID and a sender.
+ *
  * @param <T> the type of messages in the chat
  */
 public class Message<T> {
@@ -31,6 +32,7 @@ public class Message<T> {
 
     /**
      * Gets the ID of the message.
+     *
      * @return the message unique ID
      */
     public int getId() {
@@ -39,6 +41,7 @@ public class Message<T> {
 
     /**
      * Gets the sender of the message.
+     *
      * @return the user who sent the message
      */
     public UserInfo getSender() {
@@ -47,6 +50,7 @@ public class Message<T> {
 
     /**
      * Gets the content of the message.
+     *
      * @return the message content
      */
     public T getMessage() {

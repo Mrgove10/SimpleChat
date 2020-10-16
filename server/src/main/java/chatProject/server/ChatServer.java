@@ -6,12 +6,12 @@ import chatProject.algo.UserAlgo;
 import chatProject.model.messages.ChatInstance;
 import chatProject.model.messages.Chatroom;
 import chatProject.model.messages.Message;
-import chatProject.model.user.UserInfo;
 import chatProject.model.user.Status;
 import chatProject.model.user.UserAccount;
+import chatProject.model.user.UserInfo;
 import com.google.gson.Gson;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDateTime;
@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 /**
  * This class implements the server side of the Chat.
  * To be generated in the {@link Main} instance using {@link #initEmptyChat(int, Gson)}.
+ *
  * @param <T> the type of messages to use (probably String)
  */
 public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>, AutoCloseable {
@@ -58,10 +59,9 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                       Gson json) {
         this.chatInstance = chatInstance;
 
-        if(clientNotifiers == null){
+        if (clientNotifiers == null) {
             this.clientNotifiers = new ArrayList<>();
-        }
-        else{
+        } else {
             this.clientNotifiers = clientNotifiers;
         }
 
@@ -70,9 +70,10 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * The entry point to generate an instance of this class using an empty {@link ChatInstance} model.
+     *
      * @param socketPort the port of the socket to open on this server.
-     * @param json the Json (de)serializer to use
-     * @param <T> the type of messages to use
+     * @param json       the Json (de)serializer to use
+     * @param <T>        the type of messages to use
      * @return a new instance of this class to use as a server
      * @throws IOException not sure when ?
      */
@@ -107,6 +108,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Opens a socket on the given port to notify clients of new chatrooms and messages.
+     *
      * @param port the port to use
      * @throws IOException if the socket cannot be opened
      */
@@ -116,7 +118,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
         try (ServerSocket serverSocket = new ServerSocket(port)) {
 
             // loop forever to accept all new clients
-            while(true) {
+            while (true) {
 
                 // Socket.accept() is blocking - wait for a new client
                 final Socket client = serverSocket.accept();
@@ -135,12 +137,12 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     public void checkIdleClients() {
         this.checkIdleClients = new Thread(() -> {
-            while(true) {
+            while (true) {
                 try {
                     Thread.sleep(100); // check every 100ms
                     // avoid removing instances during the iteration - store members to update
                     final Collection<UserInfo> usersToUpdate = new HashSet<>();
-                    chatInstance.getUsers().forEach( (user, time) -> {
+                    chatInstance.getUsers().forEach((user, time) -> {
                                 if (user.getCurrentStatus() == Status.ACTIVE
                                         && ChronoUnit.SECONDS.between(time, LocalDateTime.now()) > 2) {
                                     user.setCurrentStatus(Status.INACTIVE);
@@ -200,6 +202,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Finds a user in the model given its username (if the user is already registered).
+     *
      * @param userName the username to find
      * @return an optional {@link UserAccount} with the user model only if already in the model
      */
@@ -221,6 +224,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
 
     /**
      * Gets the list of users in the model with an active status.
+     *
      * @return the list of connected users
      */
     public Collection<String> getConnectedUsers() {
@@ -325,7 +329,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     @Override
     public Message<T> addMessage(int chatroomId, UserInfo user, T content) {
         Message<T> newMessage = getChatroom(chatroomId).addMessage(user, content);
-        this.notifyNewMessage(chatroomId,newMessage);
+        this.notifyNewMessage(chatroomId, newMessage);
 
         return newMessage;
     }

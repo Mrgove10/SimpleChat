@@ -10,6 +10,7 @@ import java.util.*;
  * The main class for the model of the chat.
  * Holds a list of {@link Chatroom} that each contain many {@link Message}.
  * Also holds the list of {@link UserInfo}.
+ *
  * @param <T> the type of messages in the chat
  */
 public class ChatInstance<T> {
@@ -33,6 +34,7 @@ public class ChatInstance<T> {
 
     /**
      * Gets the list of chatrooms in the chat.
+     *
      * @return the list of {@link Chatroom} in the model
      */
     public List<Chatroom<T>> getCurentChatrooms() {
@@ -42,6 +44,7 @@ public class ChatInstance<T> {
 
     /**
      * Adds a new {@link Chatroom} in the chat.
+     *
      * @param newChatroom the chatroom to add
      * @return the ID of the new chatroom added
      */
@@ -53,6 +56,7 @@ public class ChatInstance<T> {
 
     /**
      * Adds a new {@link UserInfo} in the chat.
+     *
      * @param newUser the user to add
      */
     public boolean addUser(UserInfo newUser) {
@@ -80,6 +84,7 @@ public class ChatInstance<T> {
 
     /**
      * Gets the list of all registered users.
+     *
      * @return the collection of users in the chat.
      */
     public Map<UserInfo, LocalTime> getUsers() {
@@ -88,6 +93,7 @@ public class ChatInstance<T> {
 
     /**
      * Creates a new chat with no {@link Chatroom} no {@link Message} and no {@link UserInfo}.
+     *
      * @param <T> the type of messages in the chat
      * @return the new chat instance
      */
