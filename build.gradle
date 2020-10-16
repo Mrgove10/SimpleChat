@@ -1,20 +1,17 @@
 plugins {
     // central reports in ./build/buildDashboard
     id 'build-dashboard'
-    id 'pmd'
-  //  id 'findbugs'
-    id 'checkstyle'
-    id 'jacoco'
 }
 
 subprojects {
-
-
     // Java plugin for dev
     apply plugin: 'java'
 
     // Groovy plugin for Spock tests
     apply plugin: 'groovy'
+
+    //Jacoco
+    apply plugin: 'jacoco'
 
     group 'avenelt'
     version '1.0-SNAPSHOT'
@@ -41,17 +38,15 @@ subprojects {
 
     // common dependencies for all projects
     dependencies {
-
         // add JUnit tests
         testImplementation group: 'junit', name: 'junit', version: '4.12'
     }
 
-	test {
+    test {
 		afterTest { desc, result ->
 			logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
 		}
-	}
-
+    }
 
 }
 
