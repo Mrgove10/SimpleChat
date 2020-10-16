@@ -46,7 +46,7 @@ public class UserAccount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserAccount that = (UserAccount) o;
-        return username == that.username;
+        return username.equals(that.username);
     }
 
     @Override

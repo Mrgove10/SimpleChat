@@ -22,7 +22,7 @@ public class ChatInstance<T> {
 
     /**
      * The list of users in the chat.
-     * The key is the user infomation
+     * The key is the user information
      * The value is the last login time
      */
     private final Map<UserInfo, LocalTime> users;
@@ -37,7 +37,7 @@ public class ChatInstance<T> {
      *
      * @return the list of {@link Chatroom} in the model
      */
-    public List<Chatroom<T>> getCurentChatrooms() {
+    public List<Chatroom<T>> getCurrentChatrooms() {
         // return a safe read-only copy
         return Collections.unmodifiableList(chatrooms);
     }
@@ -98,7 +98,7 @@ public class ChatInstance<T> {
      * @return the new chat instance
      */
     public static <T> ChatInstance<T> initEmptyChat() {
-        return new ChatInstance<T>(new ArrayList<>(), new HashMap<>());
+        return new ChatInstance<>(new ArrayList<>(), new HashMap<>());
     }
 
 }

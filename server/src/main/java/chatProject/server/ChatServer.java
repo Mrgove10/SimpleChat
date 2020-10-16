@@ -86,7 +86,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 json);
 
         // open a dedicated thread to manage the socket for notifications.
-        final Thread socketThread = new Thread(new Runnable() {
+        server.socketThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -96,7 +96,6 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
                 }
             }
         });
-        server.socketThread = socketThread;
 
         //TODO: I should start the socket thread here
         server.socketThread.start();
@@ -207,14 +206,6 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      * @return an optional {@link UserAccount} with the user model only if already in the model
      */
     public Optional<UserAccount> findUser(String userName) {
-        // Test code
-        /*
-        if (userName.equals("testUser")) {
-            return Optional.of(new UserAccount(0, userName));
-        } else {
-            return Optional.empty();
-        }
-        */
         // Real code
         return chatInstance.getUsers().keySet().stream()
                 .map(UserInfo::getAccount)
@@ -265,7 +256,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
     public List<String> getCurrentChatroomNames() {
         return chatInstance
                 // retrieve all chatrooms
-                .getCurentChatrooms()
+                .getCurrentChatrooms()
                 .stream()
                 // get the chatroom name(s) from the model(s) instance(s)
                 .map(Chatroom::getName)
@@ -277,7 +268,7 @@ public class ChatServer<T> implements UserAlgo, ChatroomAlgo<T>, MessageAlgo<T>,
      */
     @Override
     public Chatroom<T> getChatroom(int chatroomId) {
-        return chatInstance.getCurentChatrooms().get(chatroomId);
+        return chatInstance.getCurrentChatrooms().get(chatroomId);
     }
 
     /**

@@ -20,15 +20,6 @@ public class AddMessageForm<T> {
     }
 
     /**
-     * Gets the ID of the chatroom where the message was sent
-     *
-     * @return the chatroom ID
-     */
-    public int getChatroomId() {
-        return chatroomId;
-    }
-
-    /**
      * Gets the sender of the message.
      *
      * @return the user who sent the message
@@ -37,12 +28,4 @@ public class AddMessageForm<T> {
         return user;
     }
 
-    /**
-     * Gets the content of the message.
-     *
-     * @return the message content
-     */
-    public T getContent() {
-        return content;
-    }
 }

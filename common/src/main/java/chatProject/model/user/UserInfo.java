@@ -40,7 +40,7 @@ public class UserInfo {
     }
 
     /**
-     * Sets the current satus of the user.
+     * Sets the current status of the user.
      *
      * @param currentStatus the status of the user
      */

@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class ChatInstanceTest {
     @Test
-    public void getCurentChatrooms() {
+    public void getCurrentChatrooms() {
         UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
 
         final ArrayList<Message<String>> messages = new ArrayList<>();
@@ -26,7 +26,7 @@ public class ChatInstanceTest {
 
         final ChatInstance<String> chatInstance = new ChatInstance<>(chatrooms, users);
 
-        assertEquals("The chatrooms should be the same set in the constructor", chatrooms, chatInstance.getCurentChatrooms());
+        assertEquals("The chatrooms should be the same set in the constructor", chatrooms, chatInstance.getCurrentChatrooms());
     }
 
     @Test
@@ -63,14 +63,14 @@ public class ChatInstanceTest {
 
         final ChatInstance<String> chatInstance = new ChatInstance<>(chatrooms, users);
 
-        assertEquals("The chatrooms should be the same set in the constructor", chatrooms, chatInstance.getCurentChatrooms());
+        assertEquals("The chatrooms should be the same set in the constructor", chatrooms, chatInstance.getCurrentChatrooms());
 
         int firstChatroom = chatInstance.addChatroom(new Chatroom<>("Chatroom1", userInfo, messages));
         int secondChatroom = chatInstance.addChatroom(new Chatroom<>("Chatroom2", null, new ArrayList<>()));
 
-        assertEquals("Two chatrooms have been added to the list", 2, chatInstance.getCurentChatrooms().size());
-        assertEquals("The first chatroom is find into the list", "Chatroom1", chatInstance.getCurentChatrooms().get(firstChatroom).getName());
-        assertEquals("The second chatroom is find into the list", "Chatroom2", chatInstance.getCurentChatrooms().get(secondChatroom).getName());
+        assertEquals("Two chatrooms have been added to the list", 2, chatInstance.getCurrentChatrooms().size());
+        assertEquals("The first chatroom is find into the list", "Chatroom1", chatInstance.getCurrentChatrooms().get(firstChatroom).getName());
+        assertEquals("The second chatroom is find into the list", "Chatroom2", chatInstance.getCurrentChatrooms().get(secondChatroom).getName());
 
     }
 
@@ -104,7 +104,7 @@ public class ChatInstanceTest {
     @Test
     public void initEmptyChat() {
         ChatInstance<String> chatInstance = ChatInstance.initEmptyChat();
-        assertEquals(new ArrayList<>(), chatInstance.getCurentChatrooms());
+        assertEquals(new ArrayList<>(), chatInstance.getCurrentChatrooms());
         assertEquals(new HashMap<>(), chatInstance.getUsers());
     }
 }
