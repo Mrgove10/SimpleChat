@@ -84,8 +84,6 @@ public class Chatroom<T> {
     public String toString() {
         if (owner == null) {
             return name;
-        } else if (owner == null) {
-            return name;
         } else {
             return name + " (" + owner.getAccount() + ')';
         }
