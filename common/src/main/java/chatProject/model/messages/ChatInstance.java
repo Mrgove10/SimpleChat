@@ -83,7 +83,7 @@ public class ChatInstance<T> {
      * @return the collection of users in the chat.
      */
     public Map<UserInfo, LocalTime> getUsers() {
-        return this.users;
+        return users;
     }
 
     /**
