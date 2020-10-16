@@ -1,7 +1,6 @@
 package specifications
 
 import chatProject.model.messages.ChatInstance
-import chatProject.model.messages.Message
 import chatProject.server.ChatServer
 import chatProject.server.ClientNotifierInterface
 import spock.lang.Specification
@@ -21,9 +20,9 @@ class ChatServerMessageSpec extends Specification {
         then: "The new message should be added to the model"
         // get messages in the chatroom
         server.getChatroomMessages(chatroomId)
-                // collect only the message content from the Message class
+        // collect only the message content from the Message class
                 .collect { it.message }
-                // check if the content matches the expected one
+        // check if the content matches the expected one
                 .contains("Test message")
     }
 

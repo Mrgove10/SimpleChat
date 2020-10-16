@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class ChatInstanceTest {
     @Test
-    public void getCurentChatrooms(){
+    public void getCurentChatrooms() {
         UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
 
         final ArrayList<Message<String>> messages = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ChatInstanceTest {
     }
 
     @Test
-    public void getUsers(){
+    public void getUsers() {
         UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
 
         final ArrayList<Message<String>> messages = new ArrayList<>();
@@ -49,7 +49,7 @@ public class ChatInstanceTest {
     }
 
     @Test
-    public void addChatroom(){
+    public void addChatroom() {
         UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
 
         final ArrayList<Message<String>> messages = new ArrayList<>();
@@ -75,7 +75,7 @@ public class ChatInstanceTest {
     }
 
     @Test
-    public void addUser(){
+    public void addUser() {
         UserAccount userAccount = new UserAccount(0, "Username");
         UserInfo userInfo = new UserInfo(userAccount, Status.ACTIVE);
 
@@ -102,7 +102,7 @@ public class ChatInstanceTest {
     }
 
     @Test
-    public void initEmptyChat(){
+    public void initEmptyChat() {
         ChatInstance<String> chatInstance = ChatInstance.initEmptyChat();
         assertEquals(new ArrayList<>(), chatInstance.getCurentChatrooms());
         assertEquals(new HashMap<>(), chatInstance.getUsers());

@@ -11,29 +11,29 @@ import static org.junit.Assert.assertEquals;
 
 public class ChatroomTest {
     @Test
-    public void getName(){
+    public void getName() {
         final Chatroom<String> chatroom = new Chatroom<>("Name",
-                                                                new UserInfo(
-                                                                        new UserAccount(0,"Username"),
-                                                                        Status.ACTIVE),
-                                                                new ArrayList<>());
+                new UserInfo(
+                        new UserAccount(0, "Username"),
+                        Status.ACTIVE),
+                new ArrayList<>());
 
         assertEquals("The name should be the one set in the constructor", "Name", chatroom.getName());
     }
 
     @Test
-    public void getOwner(){
-        final UserInfo userInfo = new UserInfo(new UserAccount(0,"Username"),Status.ACTIVE);
+    public void getOwner() {
+        final UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
         final Chatroom<String> chatroom = new Chatroom<>("Name",
-                                                                userInfo,
-                                                                new ArrayList<>());
+                userInfo,
+                new ArrayList<>());
         assertEquals("The owner should be the same set in the constructor", userInfo, chatroom.getOwner());
 
     }
 
     @Test
-    public void getCurrentMessages(){
-        final UserInfo userInfo = new UserInfo(new UserAccount(0,"Username"),Status.ACTIVE);
+    public void getCurrentMessages() {
+        final UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
 
         final ArrayList<Message<String>> messages = new ArrayList<>();
         messages.add(new Message<>(0, userInfo, "First message"));
@@ -45,8 +45,8 @@ public class ChatroomTest {
     }
 
     @Test
-    public void addMessage(){
-        final UserInfo userInfo = new UserInfo(new UserAccount(0,"Username"),Status.ACTIVE);
+    public void addMessage() {
+        final UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
         final Chatroom<String> chatroom = new Chatroom<>("Name",
                 userInfo,
                 new ArrayList<>());
@@ -70,7 +70,7 @@ public class ChatroomTest {
 
     @Test
     public void testToString_OwnerNotNull() {
-        final UserInfo userInfo = new UserInfo(new UserAccount(0,"Username"),Status.ACTIVE);
+        final UserInfo userInfo = new UserInfo(new UserAccount(0, "Username"), Status.ACTIVE);
         final Chatroom<String> chatroom = new Chatroom<>("Name", userInfo, new ArrayList<>());
 
         assertEquals("The toString() method of a Chatroom should print the name and the owner",

@@ -28,7 +28,7 @@ public class MessageTest {
     }
 
     @Test
-    public void getSender(){
+    public void getSender() {
         UserAccount userAccount = new UserAccount(0, "Test");
         UserInfo userInfo = new UserInfo(userAccount, Status.ACTIVE);
         final Message<String> message = new Message<>(1, userInfo, "This is my message");
@@ -45,10 +45,10 @@ public class MessageTest {
         final Message<String> message = new Message<>(1, userInfo, "This is my message");
 
         String toString = "Message{" +
-                            "id=" + 1 +
-                            ", sender=" + "Test(active)" +
-                            ", content=" + "This is my message" +
-                            '}';
+                "id=" + 1 +
+                ", sender=" + "Test(active)" +
+                ", content=" + "This is my message" +
+                '}';
 
         assertEquals("The toString() method of a Message should print the Content, the id and the sender",
                 toString, message.toString());

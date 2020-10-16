@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserInfoTest {
     @Test
-    public void testGetAccount(){
+    public void testGetAccount() {
         final UserAccount userAccount = new UserAccount(1, "User");
 
         final UserInfo userInfo = new UserInfo(userAccount, Status.ACTIVE);
@@ -15,7 +15,7 @@ public class UserInfoTest {
     }
 
     @Test
-    public void testGetCurrentStatus(){
+    public void testGetCurrentStatus() {
         final UserAccount userAccount = new UserAccount(1, "User");
 
         final UserInfo userInfo = new UserInfo(userAccount, Status.ACTIVE);
@@ -24,7 +24,7 @@ public class UserInfoTest {
     }
 
     @Test
-    public void testSetCurrentStatus(){
+    public void testSetCurrentStatus() {
         final UserAccount userAccount = new UserAccount(1, "User");
 
         final UserInfo userInfo = new UserInfo(userAccount, Status.INACTIVE);
