@@ -18,7 +18,7 @@ public class Message<T> {
     /**
      * The sender of the message.
      */
-    private final MessageOwnerConcrete sender;
+    private final UserInfo sender;
     /**
      * The content of the message.
      */
@@ -26,7 +26,7 @@ public class Message<T> {
 
     public Message(int id, UserInfo sender, T content) {
         this.id = id;
-        this.sender = (sender == null) ? null : new MessageOwnerConcrete(sender.getAccount(), sender.getCurrentStatus());
+        this.sender = (sender == null) ? null : new UserInfo(sender.getAccount(), sender.getCurrentStatus());
         this.content = content;
     }
 
