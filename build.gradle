@@ -13,6 +13,14 @@ subprojects {
     //Jacoco
     apply plugin: 'jacoco'
 
+    //Jacoco
+    apply plugin: 'pmd'
+    //Jacoco
+    apply plugin: 'checkstyle'
+    //Jacoco
+    //apply plugin: 'findbugs'
+
+
     group 'avenelt'
     version '1.0-SNAPSHOT'
 
