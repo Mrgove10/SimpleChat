@@ -4,6 +4,7 @@ import chatProject.model.user.UserInfo;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A model for a chatroom.
@@ -64,7 +65,7 @@ public class Chatroom<T> {
      * @return the new message created
      */
     public Message<T> addMessage(UserInfo userInfo, T content) {
-        final Message<T> message = new Message<>(0, null, content);
+        final Message<T> message = new Message<>(new Random().nextInt(999999999), userInfo, content);
         this.messages.add(message);
         return message;
     }
