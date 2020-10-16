@@ -6,40 +6,46 @@ plugins {
 subprojects {
 
 
-	// Java plugin for dev
-	apply plugin: 'java'
+    // Java plugin for dev
+    apply plugin: 'java'
 
-	// Groovy plugin for Spock tests
-	apply plugin: 'groovy'
+    // Groovy plugin for Spock tests
+    apply plugin: 'groovy'
 
-	group 'avenelt'
-	version '1.0-SNAPSHOT'
+    group 'avenelt'
+    version '1.0-SNAPSHOT'
 
-	// build for Java 8
-	sourceCompatibility = 1.8
+    // build for Java 8
+    sourceCompatibility = 1.8
 
-	if (project.parent.name == 'clients' || project.name == 'server') {
-		// apply the Java 'application' plugin - adds the 'run' task to run Java's main methods
-		apply plugin: 'application'
-	}
+    if (project.parent.name == 'clients' || project.name == 'server') {
+        // apply the Java 'application' plugin - adds the 'run' task to run Java's main methods
+        apply plugin: 'application'
+    }
 
-	// use Maven central to get libraries
-	repositories {
-		mavenCentral()
-	}
+    // use Maven central to get libraries
+    repositories {
+        mavenCentral()
+    }
 
-	// add dependecy on 'common' project for all other projects
-	if (project.name != 'common') {
-		dependencies {
-			implementation project(':common')
-		}
-	}
+    // add dependecy on 'common' project for all other projects
+    if (project.name != 'common') {
+        dependencies {
+            implementation project(':common')
+        }
+    }
 
-        // common dependencies for all projects
-	dependencies {
+    // common dependencies for all projects
+    dependencies {
 
         // add JUnit tests
-	testImplementation group: 'junit', name: 'junit', version: '4.12'
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+    }
+
+	test {
+		afterTest { desc, result ->
+			logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+		}
 	}
 
 
