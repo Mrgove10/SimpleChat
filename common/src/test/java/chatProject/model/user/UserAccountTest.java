@@ -17,6 +17,14 @@ public class UserAccountTest {
     }
 
     @Test
+    public void getId(){
+        final int id = 1;
+        final UserAccount user = new UserAccount(id,"Test");
+
+        assertEquals("The id should be the one set in the constructor", id, user.getId());
+    }
+
+    @Test
     public void testEquals() {
 
         final UserAccount user1 = new UserAccount(1, "MyUser");
