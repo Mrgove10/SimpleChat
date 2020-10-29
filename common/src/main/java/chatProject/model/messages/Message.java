@@ -2,7 +2,6 @@ package chatProject.model.messages;
 
 import chatProject.model.user.UserInfo;
 
-
 /**
  * A model for a message sent in the chat.
  * A message has a content (of a generic type T), a unique ID and a sender.
@@ -22,7 +21,7 @@ public class Message<T> {
     /**
      * The content of the message.
      */
-    private final T content;
+    private final transient T content;
 
     public Message(int id, UserInfo sender, T content) {
         this.id = id;

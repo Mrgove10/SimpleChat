@@ -31,8 +31,7 @@ subprojects {
     apply plugin: 'checkstyle'
 
     //stopbugs
-    apply plugin: 'com.github.spotbugs'
-
+    // apply plugin: 'com.github.spotbugs'
 
     group 'avenelt'
     version '1.0-SNAPSHOT'
@@ -74,6 +73,10 @@ subprojects {
             xml.enabled false
             html.enabled true
         }
+    }
+
+    pmd {
+        ruleSets = ["/config/pmd/pmd-exclude.xml"]
     }
 }
 

@@ -26,7 +26,7 @@ public class Chatroom<T> {
     /**
      * The list of messages sent in this chatroom.
      */
-    private final List<Message<T>> messages;
+    private final transient List<Message<T>> messages;
 
     public Chatroom(String name, UserInfo owner, List<Message<T>> messages) {
         this.name = name;

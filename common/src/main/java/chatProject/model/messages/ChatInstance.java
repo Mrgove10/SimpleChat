@@ -4,7 +4,12 @@ import chatProject.model.user.UserAccount;
 import chatProject.model.user.UserInfo;
 
 import java.time.LocalTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * The main class for the model of the chat.
@@ -18,7 +23,7 @@ public class ChatInstance<T> {
     /**
      * The list of chatrooms in the chat.
      */
-    private final List<Chatroom<T>> chatrooms;
+    private final transient List<Chatroom<T>> chatrooms;
 
     /**
      * The list of users in the chat.
@@ -66,20 +71,19 @@ public class ChatInstance<T> {
         }
 
         // may be already in the model but needs only to update the account
-        final UserAccount newUserAccount = newUser.getAccount();
+       // final UserAccount newUserAccount = newUser.getAccount();
         final Optional<UserInfo> accountAlreadyPresent = users.keySet()
                 .stream()
-                .filter(user -> user.getAccount().equals(newUserAccount))
+                .filter(user -> user.getAccount().equals(newUser.getAccount()))
                 .findAny();
         if (accountAlreadyPresent.isPresent()) {
             final UserInfo userInfo = accountAlreadyPresent.get();
             userInfo.setCurrentStatus(newUser.getCurrentStatus());
             users.replace(userInfo, LocalTime.now());
-            return true;
         } else {
             users.put(newUser, LocalTime.now());
-            return true;
         }
+        return true;
     }
 
     /**

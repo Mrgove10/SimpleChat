@@ -4,7 +4,10 @@ import chatProject.AddMessageForm;
 import chatProject.model.user.UserInfo;
 import com.google.gson.Gson;
 
-import static spark.Spark.*;
+import static spark.Spark.port;
+import static spark.Spark.put;
+import static spark.Spark.get;
+import static spark.Spark.post;
 
 /**
  * A class that exposes the Web services of the server.
