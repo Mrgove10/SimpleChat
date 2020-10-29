@@ -2,6 +2,8 @@
 
 SimpleChat est un ensemble de 2 applications permettant de déployer un serveur de chat et un client en Java.
 
+![Java CI](https://github.com/Mrgove10/SimpleChat/workflows/Java%20CI/badge.svg)
+
 ## Besoins fonctionnels ##
 
 L'application doit respecter les besoins suivants :
