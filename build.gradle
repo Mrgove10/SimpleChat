@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.5.1"
+    }
+}
+
 plugins {
     // central reports in ./build/buildDashboard
     id 'build-dashboard'
@@ -13,12 +24,14 @@ subprojects {
     //Jacoco
     apply plugin: 'jacoco'
 
-    //Jacoco
+    //pmd
     apply plugin: 'pmd'
-    //Jacoco
+
+    //checkstyle
     apply plugin: 'checkstyle'
-    //Jacoco
-    //apply plugin: 'findbugs'
+
+    //stopbugs
+    apply plugin: 'com.github.spotbugs'
 
 
     group 'avenelt'
@@ -56,5 +69,11 @@ subprojects {
 		}
     }
 
+    tasks.withType(Checkstyle) {
+        reports {
+            xml.enabled false
+            html.enabled true
+        }
+    }
 }
 
