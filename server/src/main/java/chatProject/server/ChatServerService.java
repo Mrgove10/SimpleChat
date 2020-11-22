@@ -3,11 +3,9 @@ package chatProject.server;
 import chatProject.AddMessageForm;
 import chatProject.model.user.UserInfo;
 import com.google.gson.Gson;
+import spark.Filter;
 
-import static spark.Spark.port;
-import static spark.Spark.put;
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 /**
  * A class that exposes the Web services of the server.
@@ -36,6 +34,11 @@ public class ChatServerService<T> {
     public void serve(int webServerPort) {
 
         port(webServerPort);
+
+        after((Filter) (request, response) -> { 
+                response.header("Access-Control-Allow-Origin", "*");
+                response.header("Access-Control-Allow-Methods", "GET");
+        });
 
         get("/chatrooms", (request, response) ->
                 json.toJson(
